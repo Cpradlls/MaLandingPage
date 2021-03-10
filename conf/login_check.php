@@ -32,11 +32,16 @@ include "../requetes/Read_user.php";// insertion de la requete sql readall
 $sentMail    = $_POST["mail"] ?? false;
 $sentPassword = $_POST["password"] ?? false;
 if($sentMail && $sentPassword) {
+var_dump($sentMail);
+var_dump($sentPassword);
 
     if (
         $sentMail == $result[0]["mail"] &&
         password_verify($sentPassword, $result[0]["password"])
     ) {
+        var_dump($result[0]["mail"]);
+        var_dump(password_verify($sentPassword, $result[0]["password"]));
+        exit;
         // user authenticated
         // let's create a secure session
         // and redirect the user to the backoffice
